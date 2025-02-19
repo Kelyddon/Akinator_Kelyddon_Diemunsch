@@ -1,5 +1,5 @@
 <?php
-require_once '../functions/auth.php';
+require_once '../functions/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
