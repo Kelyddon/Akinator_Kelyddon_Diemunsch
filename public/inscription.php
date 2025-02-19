@@ -9,13 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (register($username, $email, $password)) {
         header("Location: connexion.php");
         exit();
-    } else {
+    } 
+    else {
         $error = "Erreur lors de l'inscription. Veuillez réessayer.";
     }
 }
 
 include '../includes/header.phtml';
-include '../includes/navbar.phtml';
 include '../includes/inscription.phtml';
 include '../includes/footer.phtml';
-?>
