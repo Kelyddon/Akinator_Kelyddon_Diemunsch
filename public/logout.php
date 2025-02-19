@@ -1,5 +1,5 @@
 <?php
-require_once '../functions/auth.php';
+require_once '../functions/database.php';
 logout();
 header("Location: index.php");
 exit();
