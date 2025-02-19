@@ -20,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($next && is_array($next)) {
         $_SESSION['current_question'] = $next;
-    } else {
+    } 
+    else {
         $result = $next;
         if ($result) {
             // Sauvegarder la partie
