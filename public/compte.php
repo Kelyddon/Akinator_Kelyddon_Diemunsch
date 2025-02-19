@@ -1,5 +1,6 @@
 <?php
 require_once '../config/database.php';
+require_once '../functions/auth.php';
 
 if (!isLoggedIn()) {
     header("Location: connexion.php");
