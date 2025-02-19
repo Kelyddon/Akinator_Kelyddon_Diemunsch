@@ -1,5 +1,5 @@
 <?php
-require_once '../functions/auth.php';
+require_once '../functions/database.php';
 
 if (!isLoggedIn()) {
     header ("Location: connexion.php");
