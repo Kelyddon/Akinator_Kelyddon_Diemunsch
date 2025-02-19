@@ -8,13 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (login($username, $password)) {
         header("Location: index.php");
         exit();
-    } else {
+    } 
+    else {
         $error = "Nom d'utilisateur ou mot de passe incorrect.";
     }
 }
 
 include '../includes/header.phtml';
-include '../includes/navbar.phtml';
 include '../includes/connexion.phtml';
 include '../includes/footer.phtml';
-?>
