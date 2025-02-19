@@ -22,15 +22,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['current_question'] = $next;
     } 
     else {
-        $result = $next;
+        $result = $next['resultat'] ?? $next;
+        $image = $next['image_url'] ?? '';
+        
         if ($result) {
             // Sauvegarder la partie
-            $log = $pdo -> prepare ("INSERT INTO parties (user_id, date, result) VALUES (:user_id, NOW(), :result)");
-            $log -> execute(['user_id' => $_SESSION['user_id'], 'result' => $result]);
+            $log = $pdo->prepare("INSERT INTO parties (user_id, date, result) VALUES (:user_id, NOW(), :result)");
+            $log->execute(['user_id' => $_SESSION['user_id'], 'result' => $result]);
             $_SESSION['current_question'] = null;
-            header("Location: resultat.php?result=" . urlencode($result));
+            header("Location: resultat.php?result=" . urlencode($result) . "&image=" . urlencode($image));
             exit();
-        } 
+        }
         else {
             echo "<p>Erreur: Impossible de récupérer la question suivante ou le résultat.</p>";
             exit();
