@@ -24,12 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $next;
         if ($result) {
             // Sauvegarder la partie
-            $stmt = $pdo->prepare("INSERT INTO parties (user_id, date, result) VALUES (:user_id, NOW(), :result)");
-            $stmt->execute(['user_id' => $_SESSION['user_id'], 'result' => $result]);
+            $log = $pdo -> prepare ("INSERT INTO parties (user_id, date, result) VALUES (:user_id, NOW(), :result)");
+            $log -> execute(['user_id' => $_SESSION['user_id'], 'result' => $result]);
             $_SESSION['current_question'] = null;
             header("Location: resultat.php?result=" . urlencode($result));
             exit();
-        } else {
+        } 
+        else {
             echo "<p>Erreur: Impossible de récupérer la question suivante ou le résultat.</p>";
             exit();
         }
@@ -39,7 +40,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $question = $_SESSION['current_question'];
 
 include '../includes/header.phtml';
-include '../includes/navbar.phtml';
 include '../includes/quiz.phtml';
 include '../includes/footer.phtml';
-?>
