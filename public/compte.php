@@ -8,7 +8,7 @@ if (!isLoggedIn()) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete_account'])) {
-        // Supprimer les parties associées
+        // Supprimer les parties associées au compte
         $log = $pdo->prepare("DELETE FROM parties WHERE user_id = :id");
         $log->execute(['id' => $_SESSION['user_id']]);
 
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     } 
     elseif (isset($_POST['update_password'])) {
-        // Mettre à jour le mot de passe
+        // Mettre à jour le mot de passe du compte
         $new_password = password_hash($_POST['new_password'], PASSWORD_BCRYPT);
         $log = $pdo->prepare("UPDATE users SET password = :password WHERE id = :id");
         $log->execute(['password' => $new_password, 'id' => $_SESSION['user_id']]);
