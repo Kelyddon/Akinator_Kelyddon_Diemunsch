@@ -2,7 +2,7 @@
     <h1>Quiz</h1>
     <?php if ($question): ?>
         <form method="post">
-            <p><?php echo htmlspecialchars($question['text']); ?></p>
+            <p><?= htmlspecialchars($question['text']); ?></p>
             <button type="submit" name="answer" value="Oui" class="btn btn-success">Oui</button>
             <button type="submit" name="answer" value="Non" class="btn btn-danger">Non</button>
         </form>
