@@ -30,8 +30,14 @@ function logout() {
 
 function register($username, $email, $password) {
     global $pdo;
+    
+    $log = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+    $log->execute(['username' => $username]);
+    if ($log->fetch(PDO::FETCH_ASSOC)) {
+        return false; 
+    }
+    
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
     $log = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
     return $log->execute(['username' => $username, 'email' => $email, 'password' => $hashed_password]);
 }
-
