@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     } 
     else {
-        $error = "Erreur lors de l'inscription. Veuillez réessayer.";
+        $error = "Erreur lors de l'inscription. Veuillez changer le nom d'utilisateur.";
     }
 }
 
