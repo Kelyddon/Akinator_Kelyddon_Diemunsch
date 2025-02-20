@@ -22,15 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['current_question'] = $next;
     } 
     else {
-        $result = $next['resultat'] ?? $next;
-        $image = $next['image_url'] ?? '';
-        
+        $result = $next['id'] ?? $next;
+        $respons = getAnswerById($result);
         if ($result) {
             // Sauvegarder la partie
             $log = $pdo->prepare("INSERT INTO parties (user_id, date, result) VALUES (:user_id, NOW(), :result)");
-            $log->execute(['user_id' => $_SESSION['user_id'], 'result' => $result]);
+            $log->execute(['user_id' => $_SESSION['user_id'], 'result' => $respons["result"]]);
             $_SESSION['current_question'] = null;
-            header("Location: resultat.php?result=" . urlencode($result) . "&image=" . urlencode($image));
+            header("Location: resultat.php?result=" . urlencode($respons["result"]) . "&image=" . urlencode($respons["image_url"]) . "&description=" . urlencode($respons["description"]));
             exit();
         }
         else {
