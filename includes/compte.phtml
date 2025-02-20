@@ -1,5 +1,6 @@
 <div class="container">
-    <h1>Mon Compte</h1>
+    <h1>Bonjour <?= htmlspecialchars($_SESSION['username']); ?>, bienvenue sur la page de votre compte</h1>
+    
     <?php if (isset($message)) echo "<p>$message</p>"; ?>
     <form method="post">
         <div class="form-group">
@@ -16,7 +17,7 @@
     <h2>Historique des parties</h2>
     <ul>
         <?php foreach ($parties as $partie): ?>
-            <li><?php echo $partie['date'] . " : " . $partie['result']; ?></li>
+            <li><?= $partie['date'] . " : " . $partie['result']; ?></li>
         <?php endforeach; ?>
     </ul>
 </div>
