@@ -10,14 +10,14 @@
 <?php require_once '../functions/auth.php'; ?>
 <nav>
     <ul>
-        <li><a href="index.php">Accueil</a></li>
+        <li><a class="nav_header" href="index.php">Accueil</a></li>
         <?php if (isLoggedIn()): ?>
-            <li><a href="quiz.php">Jouer</a></li>
-            <li><a href="compte.php">Mon compte</a></li>
-            <li><a href="logout.php">Déconnexion</a></li>
+            <li><a class="nav_header" href="quiz.php">Jouer</a></li>
+            <li><a class="nav_header" href="compte.php">Mon compte</a></li>
+            <li><a class="nav_header" href="logout.php">Déconnexion</a></li>
         <?php else: ?>
-            <li><a href="inscription.php">Inscription</a></li>
-            <li><a href="connexion.php">Connexion</a></li>
+            <li><a class="nav_header" href="inscription.php">Inscription</a></li>
+            <li><a class="nav_header" href="connexion.php">Connexion</a></li>
         <?php endif; ?>
     </ul>
 </nav>
