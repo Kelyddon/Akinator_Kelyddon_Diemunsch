@@ -6,7 +6,8 @@ function getFirstQuestion() {
     $log = $pdo->query("SELECT * FROM questions WHERE first_question = TRUE LIMIT 1");
     if ($log) {
         return $log->fetch(PDO::FETCH_ASSOC);
-    } else {
+    } 
+    else {
         return false;
     }
 }
@@ -29,10 +30,17 @@ function getNextQuestion($question_id, $answer) {
             }
         } 
         else {
-            return $answer ? $answer['result'] : false;
+            return $answer ? $answer['id'] : false;
         }
     } 
     else {
         return false;
     }
+}
+
+function getAnswerById($id){
+    global $pdo;
+    $log = $pdo->prepare("SELECT * FROM answer WHERE id = :id");
+    $log->execute(['id' => $id]);
+    return $log->fetch(PDO::FETCH_ASSOC);
 }
