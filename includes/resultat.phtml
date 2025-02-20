@@ -1,5 +1,7 @@
 <div class="container">
     <h1>Résultat</h1>
-    <p>Akinator a deviné : <?php echo htmlspecialchars($_GET['result']); ?></p>
+    <p>Akinator a deviné : <?= htmlspecialchars($_GET['result']); ?></p>
+    <img src="<?=htmlspecialchars($_GET['image']) ?>"></img>
+    <p><?= htmlspecialchars($_GET['description']); ?></p>
     <a href="quiz.php" class="btn btn-primary">Rejouer</a>
 </div>
