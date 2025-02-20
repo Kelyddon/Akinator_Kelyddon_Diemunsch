@@ -3,10 +3,10 @@ require_once '../config/database.php';
 require_once '../functions/auth.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if (login($username, $password)) {
+    if (login($email, $password)) {
         header("Location: index.php");
         exit();
     } 
