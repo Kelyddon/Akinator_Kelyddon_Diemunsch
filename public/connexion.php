@@ -3,10 +3,10 @@ require_once '../config/database.php';
 require_once '../functions/auth.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if (login($email, $password)) {
+    if (login($username, $password)) {
         header("Location: index.php");
         exit();
     } 
@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Nom d'utilisateur ou mot de passe incorrect.";
     }
 }
-
 include '../includes/header.phtml';
 include '../includes/connexion.phtml';
 include '../includes/footer.phtml';
